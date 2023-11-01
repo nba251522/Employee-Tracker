@@ -1,5 +1,13 @@
 const inquirer = require('inquirer');
-const { getDepartments, addEmployee } = require('./queries');
+const { 
+    getDepartments, 
+    addEmployee, 
+    viewAllRoles, 
+    viewAllEmployees, 
+    addDepartment, 
+    addRole, 
+    updateEmployeeRole 
+} = require('./queries');
 
 const startApp = async () => {
     try {
