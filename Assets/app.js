@@ -91,14 +91,21 @@ const startApp = async () => {
                         message: "What's the employee's role ID?"
                     },
                     {
-                        type: 'number',
+                        type: 'input',
                         name: 'managerId',
                         message: "What's the manager's ID? (Leave blank if no manager)",
-                        default: null,
                         filter: (value) => {
-                            return value === '' ? null : value;
+                            value = value.toString().trim();
+                            return value === '' ? null : Number(value);
+                        },
+                        validate: (value) => {
+                            value = value.toString().trim();
+                            if (value === '' || !isNaN(value)) {
+                                return true;
+                            }
+                            return 'Please enter a valid number or leave blank for no manager';
                         }
-                    },
+                    }
                 ]);
                 await addEmployee(
                     employeeDetails.firstName,
